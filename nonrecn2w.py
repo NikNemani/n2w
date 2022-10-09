@@ -46,17 +46,8 @@ w2 = {
     , 103: 'Googol', 104: 'Googol', 105: 'Googol'
 }
 
-#divisor for exponent. Needed for divby var in n2w functions
-# ctr = 0
-# ctr2 = 3
-# for i in range(1,106):
-#     if i<=3:
-#         divisor_exponent[i] = i-1
-#     else:
-#         divisor_exponent[i] = ctr2
-#         ctr += 1
-#         if ctr % 3 == 0:
-#             ctr2 += 3
+#Divisor for exponent. Needed for divn var in n2w functions
+
 
 divisor_exponent = {
     1: 0, 2: 1, 3: 2
