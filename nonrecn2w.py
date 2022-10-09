@@ -2,6 +2,19 @@ from flask import Flask
 from flask_restful import Api, Resource
 import json
 
+"""
+nonrecn2w
+---------
+    This is an implementation of a number to words program.The program is similar to num2words.py with a few minor differences. 
+    One differnce is that it implements the two conversion functions nonrecursively (numtol3 and n2w).It also does not include 
+    the factorial function. Other than that it works exactly same.
+
+classes
+------- 
+    N2WClass
+        contains all the methods needed to convert a given number into it's word form.
+"""
+
 
 class N2WClass() :
     """ A class that contains all the methods needed to convert a number into words. Note this class only contains class attributes.
@@ -27,8 +40,6 @@ class N2WClass() :
         Inserts a comma into the number passed in.
     validrun (nmbr)
         Validates the input and invokes the n2w method with validated input.
-    fact (n)
-        A method for finding the factorial of the number (n) that is passed in.
     """
     #Dictionary of numbers between 1-19 as well as tens places for numbers under 100
     words = {

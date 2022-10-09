@@ -2,6 +2,19 @@ from flask import Flask
 from flask_restful import Api, Resource
 import json
 
+"""nonrecn2w
+---------
+    This is an implementation of a number to words program. It converts a given number into the word form of 
+    that number. For example, if the number is 1234, the program will output one thousand, two hundred thirty four.
+    The program utilizes flask's built-in development server to display the result of number to words conversion on 
+    a webpage. A similar implementation of this program can be found in nonrecn2w.py . The nonrecn2w.py implementation 
+    doesn't have any recursive calls in it's conversion methods (n2w_lt3 and n2w).
+
+classes
+------- 
+    N2WClass
+        contains all the methods needed to convert a given number into it's word form.
+"""
 
 class N2WClass() :
     """ A class that contains all the methods needed to convert a number into words. Note this class only contains class attributes.
