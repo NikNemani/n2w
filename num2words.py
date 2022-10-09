@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restful import Api, Resource
 import json
 
-class N2WDicts() :
+class N2WClass() :
     #Dictionary of numbers between 1-19 as well as tens places for numbers under 100
     words = {
         0: '', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten'
@@ -88,13 +88,6 @@ class N2WDicts() :
         , 100: 99, 101: 99, 102: 99
         , 103: 102, 104: 102, 105: 102
     }
-
-class N2WLogic() :
-
-    dicts_object = N2WDicts()
-    words = dicts_object.words 
-    divisor_exponent = dicts_object.divisor_exponent
-    w2 = dicts_object.w2
 
     def n2w_lt3(self, nmbr, lngth):
         """ For numbers that are less than length 3. Takes in two int parameters
@@ -235,7 +228,7 @@ class N2WLogic() :
 
 if __name__ == '__main__':
 
-    n2wfuncs = N2WLogic()
+    n2wfuncs = N2WClass()
 
     class RunFact(Resource):
         def get(self, nmbr):
