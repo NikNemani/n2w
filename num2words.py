@@ -2,7 +2,34 @@ from flask import Flask
 from flask_restful import Api, Resource
 import json
 
+
 class N2WClass() :
+    """ A class that contains all the methods needed to convert a number into words. Note this class only contains class attributes.
+        It has no instance attributes.
+
+    Attributes
+    ---------- 
+    words : dict(int : str)
+        stores the integer form of a number between 0-20 and the tens places from 30 - 90; Maps these values to strings which
+        is the number in word form
+    w2 : dict(int : str)
+        similar to words except stores the value of num places that have a length of 105 or less. 
+    divisor_exponent : dict(int: int)
+        provides the divisor for exponent. Needed for divby var in n2w functions.
+
+    Methods
+    ------- 
+    n2w_lt3 (nmbr,lngth)
+        Used to convert numbers that have a length less than or equal to 3
+    n2w (nmbr,lngth)
+        Used to convert numbers that have a length greater than 3
+    inscomma (nmbr,lngth)
+        Inserts a comma into the number passed in.
+    validrun (nmbr)
+        Validates the input and invokes the n2w method with validated input.
+    fact (n)
+        A method for finding the factorial of the number (n) that is passed in.
+    """
     #Dictionary of numbers between 1-19 as well as tens places for numbers under 100
     words = {
         0: '', 1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten'
@@ -90,15 +117,15 @@ class N2WClass() :
     }
 
     def n2w_lt3(self, nmbr, lngth):
-        """ For numbers that are less than length 3. Takes in two int parameters
-            nmbr, and lngth
+        """ For numbers that are less than or equal to length 3. Takes in two int parameters
+            nmbr, and lngth. This method makes a recursive call.
 
         Args:
             nmbr (int): the number passed in
             lngth (int): length of the number passed in
 
         Returns:
-            string: the number passed in is converted into words
+            str: the number passed in is converted into words
         """
         if nmbr < 20:
             return self.words.get(nmbr)
@@ -114,15 +141,15 @@ class N2WClass() :
 
     def n2w(self, nmbr, lngth):
         """ For numbers that are greater than length 3. Takes in two int parameters
-            nmbr, and lngth
-            Calls n2w_lt3 if lngth is less than 4
+            nmbr, and lngth. This method makes a recursive call. Also calls n2w_lt3 if 
+            lngth is less than 4
 
         Args:
             nmbr (int): the number passed in
             lngth (int): length of the number passed in
 
         Returns:
-            string: the number passed in is converted into words
+            str: the number passed in is converted into words
         """
         if lngth < 4:
             return self.n2w_lt3(nmbr, lngth)
@@ -140,13 +167,14 @@ class N2WClass() :
         return word_str + ' ' + self.w2.get(lngth) + ', ' + self.n2w(x[1], len(str(x[1])))
 
     def inscomma(self,nmbr):
-        """_summary_
+        """ Inserts a comma into a number. For example if the number 12345 is passed in the mehtod will
+            return 12,345
 
         Args:
-            nmbr (_String): the number passed in as a string.
+            nmbr (str): the number passed in as a string.
 
         Returns:
-            string: returns the number passed in with appropriate comma placement
+            str: returns the number passed in with appropriate comma placement
         """
         lngth = len(nmbr)
         if lngth < 4:
@@ -182,10 +210,10 @@ class N2WClass() :
         """ It validates the input and passes the validated input into n2w.
 
         Args:
-            nmbr (string): The number that is passed in
+            nmbr (str): The number that is passed in
 
         Returns:
-            string: returns a string that shows the user that their inputed number has
+            str: returns a string that shows the user that their inputed number has
             been converted into words. If the input is invalid it generates an appropiate
             error message.
         """
